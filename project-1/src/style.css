@@ -1,0 +1,21 @@
+.header{
+    display: flex;
+    align-items: center;
+
+}
+.rightSide{
+    margin-right: 0;
+}
+.leftSide{
+    width: 100px;
+    margin-right:70px;
+}
+.logos{
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+}
+body{
+    background-color: silver;
+}
+
