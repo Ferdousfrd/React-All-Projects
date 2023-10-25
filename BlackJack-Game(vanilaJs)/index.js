@@ -3,7 +3,19 @@ let cards = [] // making an array of cards
 let sum = 0
 let hasBlackJack = false            //chacking if its 21 or not
 let isAlive = false                  //to check if we still in the game or not.
+let isGameStarted = false            //checking if the game is started yet.
 let message = ""                    //created an empty string to hold our rendering message
+let messageEl = document.getElementById("message-el")
+let sumEl = document.getElementById("sum")
+let cardsEl = document.getElementById("cards")
+let playerEl = document.getElementById("player-el")
+
+let player = {
+    name: "Player1",
+    chips: 145
+}
+
+playerEl.textContent = player.name + ": $"+ player.chips
 
 //getting randome cards from 1 to 11
 function getRandomCards(){
@@ -23,13 +35,19 @@ function getRandomCards(){
 
 //starting the game. works when we click start button
 function startGame(){ 
-    isAlive = true
-    let firstCard = getRandomCards()
-    let secondCard = getRandomCards()
-    cards = [firstCard, secondCard]
-    sum = firstCard + secondCard
+    if(isGameStarted === false){   //fixing the bug that once i press Start Game button, i cant press it again until the round ends.
+        isAlive = true
+        let firstCard = getRandomCards()
+        let secondCard = getRandomCards()
+        cards = [firstCard, secondCard]
+        sum = firstCard + secondCard
 
-    renderGame();
+        renderGame();
+        isGameStarted = true
+    }    
+    else{
+        console.log("Game is ON. wait till the next round")
+    }
 }
 
 //the game functions
@@ -46,22 +64,26 @@ function renderGame() {
 
 
 //down below we getting the elements with their ids and changing values after clicking
-    document.getElementById("message-el").textContent = message
-    document.getElementById("sum").textContent = "Sum : " + sum
-    document.getElementById("cards").textContent = "Cards : "
+    messageEl.textContent = message
+    sumEl.textContent = "Sum : " + sum
+    cardsEl.textContent = "Cards : "
 
     for(let i = 0; i<cards.length; i++){
-    document.getElementById("cards").textContent +=  cards[i] + " "
+    cardsEl.textContent +=  cards[i] + " "
     }
 
 }
 
 //newcard function for new card button click
 function newCard(){
-   
-    let extraCard = getRandomCards();
-    sum += extraCard;           //adding 3rd card to sum
-    cards.push(extraCard)
-    renderGame();               //then with the new card, we are calling the main game functon again
+    if(isAlive===true){                 //fixed bug that I cant press New Card again once i lost the game
+        let extraCard = getRandomCards();
+        sum += extraCard;           //adding 3rd card to sum
+        cards.push(extraCard)
+        renderGame();
+    }
+    else{
+        return isAlive = false
+    }               
 
 }
