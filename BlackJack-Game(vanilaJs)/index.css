@@ -39,3 +39,6 @@ button{
     display: block;
     margin: 4px auto 4px auto;
 }
+button:hover{
+    background-color:wheat;
+}
