@@ -1,0 +1,65 @@
+Learning react and doing projects.
+https://www.youtube.com/watch?v=bMknfKXIFA8
+
+First thing to learn,
+in js file, to render value, we have to type, ReactDOM.render(<h1>Hello</h>, document.getElementById("root"))
+And the id("root"), we have to create it in the main html file. Like, <div id="root"></div> 
+
+In JSX, we cannot use two tags like<h1></h><p></P>; two siblings together. In order to do that, we have touse a div
+and put em all in the div as one parent.
+<div>
+   <h1></h1>
+   <p></p>
+</div>
+
+We can also make a variable and put our JSX codes in the variabke and render the variable
+const page = (
+    <div>
+        <h1 className="header">This is Jsx</h1>
+        <p>asdasd</p>
+    </div>
+)
+
+ReactDOM.render(
+    page, document.getElementById("root"))
+
+** learning thro scrimba. 
+https://scrimba.com/learn/learnreact/drag-and-drop-deploy-with-netlify-co0cc43c19137835bc361427d
+
+So in js file, we have to import the libraries for react and ReactDOM in order to use them.
+import React from "react" //gotta add dependencies react@17.0.2
+import ReactDOM from "react-dom" //gotta add dependencies react-dom@17.0.2
+
+append() method in js: It is a method to add elements or nodes in a div. easily can append multiple nodes or elements
+with this method. Also supports combination or texts, elements
+
+components:
+functions that does small work. Composable or reusable codes that does something
+eaxmple:(instead of the page variable we created above, we can use a component)
+function Page(){
+	return(
+		<div><h1>HELO</h1></div>
+		)
+}
+ReactDOM.render(<Page/>,document.getElementByID("root"))
+//for components, we have to use pascal naming method for function(PageAdminTest()) and 
+when we render, we can call em by PageAdminTest() or <PageAdminTest /> 
+
+Just like that, we can creat Header(), Body() and Footer() functions as components and 
+render them in ReacrDOM. We have to use wrap them allaround with these<></>. Cus we cant render multiple
+components in ReactDOM as siblings. we have to wrrap them and use it as parent.
+example:
+ReactDOM.render(
+    <>
+        <Header />  
+        <CustomPage />
+        <Footer />
+    </>
+    , document.getElementById("root"))
+
+Now, we will take these small function or components we made above, and put them in their own page.
+we will create a folder called components and create files sucj as Header.js, Footer.js etc and put the function codes
+there. Then we will have to export them from components files and import them into main page
+
+import Footer from "./components/Footer"
+import Header from "./components/Header"
