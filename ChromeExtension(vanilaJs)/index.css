@@ -20,3 +20,15 @@ button{
     color: white;
     font-weight: bold;
 }
+ul{
+    list-style: none;
+    padding: 5px;
+    margin: 14px 4px;
+
+}
+a{
+    color: #5f9341;
+}
+li{
+    margin: 4px;
+}
