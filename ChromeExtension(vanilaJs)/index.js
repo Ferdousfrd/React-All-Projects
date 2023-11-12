@@ -4,10 +4,18 @@ const ulEl = document.getElementById("ul-el")
 
 let myLeads = []
 
+
+let leadsLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+console.log(leadsLocalStorage)
+
+
+
 btnEl.addEventListener("click", function(){
     myLeads.push(inputEl.value)
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
     inputEl.value = ""
     renderList()
+
 })
 
 function renderList(){
